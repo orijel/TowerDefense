@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mobile/Shoot.unity
     guid: e6b5d61ed6134423287160af27eaa4ce
   m_configObjects:

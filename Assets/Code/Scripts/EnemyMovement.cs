@@ -33,24 +33,22 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_currentPath.HasReachedPathPoint(_target, transform, distanceThreshold))
+        if (!_currentPath.HasReachedPathPoint(_target, transform, distanceThreshold)) return;
+        if (_currentPath.IsLastPointInPath(_target))
         {
-            if (_currentPath.IsLastPointInPath(_target))
+            if (_target.IsEndPoint)
             {
-                _currentPath = _currentPath.GetNextPath();
-                _target = _currentPath.GetNextPathPoint();
+                // TODO: damage the player
+                Destroy(gameObject);
+                return;
             }
-            else
-            {
-                _target = _currentPath.GetNextPathPoint(_target);
-            }
+                
+            _currentPath = _currentPath.GetNextPath();
+            _target = _currentPath.GetNextPathPoint();
         }
-
-        // TODO: fix for split path
-        if (_target.IsEndPoint)
+        else
         {
-            // TODO: damage the player
-            Destroy(gameObject);
+            _target = _currentPath.GetNextPathPoint(_target);
         }
     }
 
