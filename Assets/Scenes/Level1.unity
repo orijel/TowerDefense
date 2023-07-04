@@ -4803,8 +4803,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpawnedEnemies: 2
-  maxSpawnTime: 0.5
-  minSpawnTime: 3
+  maxSpawnTime: 3
+  minSpawnTime: 0.5
+  upperSpawnTimeLimit: 0.8
+  lowerSpawnTimeLimit: 0.1
   spawnPoint: {fileID: 844754147}
 --- !u!1001 &604654908
 PrefabInstance:
@@ -10997,10 +10999,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22957eddb332324d8182e76b84d0e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelPaths:
-  - {fileID: 162719482}
-  - {fileID: 1377513807}
-  - {fileID: 616572396}
+  difficultyModifier: 0.9
+  difficultyIncreaseTime: 15
+  startingPath: {fileID: 162719482}
 --- !u!4 &1396727224
 Transform:
   m_ObjectHideFlags: 0

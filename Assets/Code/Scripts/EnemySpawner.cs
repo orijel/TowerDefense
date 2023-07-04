@@ -6,8 +6,10 @@ using Zenject;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private int initialSpawnedEnemies = 2;
-    [SerializeField] private float maxSpawnTime = 0.5f;
-    [SerializeField] private float minSpawnTime = 3;
+    [SerializeField] private float maxSpawnTime = 3;
+    [SerializeField] private float minSpawnTime = 0.5f;
+    [SerializeField] private float upperSpawnTimeLimit = 0.8f;
+    [SerializeField] private float lowerSpawnTimeLimit = 0.1f;
     [SerializeField] private Transform spawnPoint;
     
     private Enemy.Factory _enemyFactory;
@@ -39,5 +41,15 @@ public class EnemySpawner : MonoBehaviour
         _enemyFactory.Create(spawnPoint.position);
         _spawnTimer = 0;
         _nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+    }
+
+    public void IncreaseDifficulty(float difficultyExponentialModifier)
+    {
+        maxSpawnTime = maxSpawnTime <= upperSpawnTimeLimit
+            ? upperSpawnTimeLimit
+            : maxSpawnTime * difficultyExponentialModifier;
+        minSpawnTime = minSpawnTime <= lowerSpawnTimeLimit
+            ? minSpawnTime
+            : minSpawnTime * difficultyExponentialModifier;
     }
 }

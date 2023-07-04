@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _currentPath = _levelManager.CurrentPath;
+        _currentPath = _levelManager.StartingPath;
         _target = _currentPath.GetNextPathPoint();
     }
 
