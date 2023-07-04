@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,4 +15,10 @@ public abstract class TravelPathBase : MonoBehaviour
     public abstract int GetPointIndex(PathPoint point);
     public abstract bool IsLastPointInPath(PathPoint point);
     public abstract TravelPathBase GetNextPath();
+    public abstract void DrawPath();
+
+    private void OnDrawGizmosSelected()
+    {
+        DrawPath();
+    }
 }

@@ -12,22 +12,22 @@ public class SplitTravelPath : TravelPathBase
     [SerializeField] private TravelPathBase[] travelPaths;
     
     private readonly Random _randomPathSelector = new();
-    private PathPoint dummyPoint;
+    private PathPoint _dummyPoint;
 
     [Inject]
     private void Construct([Inject(Id = InjectionId.DummyPathPointId)] PathPoint dummyPathPoint)
     {
-        this.dummyPoint = dummyPathPoint;
+        _dummyPoint = dummyPathPoint;
     }
     
     public override PathPoint GetNextPathPoint()
     {
-        return dummyPoint;
+        return _dummyPoint;
     }
 
     public override PathPoint GetNextPathPoint(PathPoint currentPoint)
     {
-        return dummyPoint;
+        return _dummyPoint;
     }
 
     public override int GetPointIndex(PathPoint point)
@@ -49,5 +49,13 @@ public class SplitTravelPath : TravelPathBase
     {
         var randomPathIndex = _randomPathSelector.Next(0, travelPaths.Length);
         return travelPaths[randomPathIndex];
+    }
+    
+    public override void DrawPath()
+    {
+        foreach (var path in travelPaths)
+        {
+            path.DrawPath();
+        }
     }
 }

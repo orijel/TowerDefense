@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TravelPath : TravelPathBase
@@ -25,7 +26,7 @@ public class TravelPath : TravelPathBase
     public override PathPoint GetNextPathPoint(PathPoint currentPoint)
     {
         var nextIndex = currentPoint.Index + 1;
-        return nextIndex >= pathPoints.Length ? nextPath.GetNextPathPoint() : pathPoints[nextIndex];
+        return nextIndex < pathPoints.Length ? pathPoints[nextIndex] : null;
     }
 
     public override int GetPointIndex(PathPoint point)
@@ -41,5 +42,11 @@ public class TravelPath : TravelPathBase
     public override TravelPathBase GetNextPath()
     {
         return nextPath;
+    }
+    
+    public override void DrawPath()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLineStrip(pathPoints.Select(point => point.transform.position).ToArray(), false);
     }
 }
