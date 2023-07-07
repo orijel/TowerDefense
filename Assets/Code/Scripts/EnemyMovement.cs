@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Enemy enemy;
     
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
@@ -26,8 +27,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _currentPath = _levelManager.StartingPath;
-        _target = _currentPath.GetNextPathPoint();
+        InitPath();
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
             if (_target.IsEndPoint)
             {
                 // TODO: damage the player
-                Destroy(gameObject);
+                enemy.Despawn();
                 return;
             }
                 
@@ -56,5 +56,11 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 direction = (_target.transform.position - transform.position).normalized;
         rb.velocity = direction * (moveSpeed * Time.fixedDeltaTime);
+    }
+    
+    public void InitPath()
+    {
+        _currentPath = _levelManager.StartingPath;
+        _target = _currentPath.GetNextPathPoint();
     }
 }

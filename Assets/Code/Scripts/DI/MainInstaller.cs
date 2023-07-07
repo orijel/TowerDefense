@@ -16,9 +16,9 @@ public class MainInstaller : MonoInstaller
             .AsSingle();
 
         Container.Bind<EnemySpawner>().FromComponentOn(enemySpawner).AsSingle();
-        
-        Container.BindFactory<Vector3, Enemy, Enemy.Factory>().FromMonoPoolableMemoryPool(pool =>
-            pool.WithInitialSize(5).FromComponentInNewPrefab(enemyPrefab).UnderTransformGroup("EnemyPool").AsSingle());
-        
+
+        Container.BindMemoryPool<Enemy, Enemy.Factory>().WithInitialSize(5).FromComponentInNewPrefab(enemyPrefab)
+            .UnderTransformGroup("EnemyPool").AsSingle();
+
     }
 }

@@ -163,7 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 127358851567174779}
-  moveSpeed: 30
+  enemy: {fileID: 4829175514757598850}
+  moveSpeed: 50
   distanceThreshold: 0.1
 --- !u!114 &4829175514757598850
 MonoBehaviour:
@@ -177,3 +178,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372447b703f260247ae626bc5c32ed73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 6930174922184786771}

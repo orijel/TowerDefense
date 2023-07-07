@@ -4803,7 +4803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpawnedEnemies: 2
-  maxSpawnTime: 3
+  maxSpawnTime: 10
   minSpawnTime: 0.5
   upperSpawnTimeLimit: 0.8
   lowerSpawnTimeLimit: 0.1
@@ -17203,6 +17203,10 @@ PrefabInstance:
     - target: {fileID: 2548274149023732670, guid: 1612370d07b71a74598b73d58caf188c, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548274149023732670, guid: 1612370d07b71a74598b73d58caf188c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6930174922184786771, guid: 1612370d07b71a74598b73d58caf188c, type: 3}
       propertyPath: moveSpeed

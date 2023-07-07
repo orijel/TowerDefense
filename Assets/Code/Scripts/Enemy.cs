@@ -4,27 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class Enemy : MonoBehaviour, IPoolable<Vector3, IMemoryPool>, IDisposable
+public class Enemy : MonoBehaviour
 {
-    private IMemoryPool _pool;
+    [Header("References")]
+    [SerializeField] private EnemyMovement movement;
+    
+    private EnemySpawner _spawner;
 
-    public void OnDespawned()
+    private void OnReset(Vector3 startingPosition, EnemySpawner spawner)
     {
-        _pool = null;
-    }
-
-    public void OnSpawned(Vector3 startingPosition, IMemoryPool pool)
-    {
+        _spawner = spawner;
+        movement.InitPath();
         transform.position = startingPosition;
-        _pool = pool;
     }
 
-    public void Dispose()
+    public void Despawn()
     {
-        _pool.Despawn(this);
+        if (_spawner)
+        {
+            _spawner.Despawn(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
-    public class Factory : PlaceholderFactory<Vector3, Enemy>
+    
+    public class Factory : MonoMemoryPool<Vector3, EnemySpawner, Enemy>
     {
+        protected override void Reinitialize(Vector3 startingPosition, EnemySpawner spawner, Enemy enemy)
+        {
+            enemy.OnReset(startingPosition, spawner);
+            base.Reinitialize(startingPosition, spawner, enemy);
+        }
     }
 }

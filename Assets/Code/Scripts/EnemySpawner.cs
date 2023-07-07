@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < initialSpawnedEnemies; i++)
         {
-            _enemyFactory.Create(spawnPoint.position);
+            _enemyFactory.Spawn(spawnPoint.position, this);
         }
         _nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         _spawnTimer += Time.deltaTime;
         if (!(_spawnTimer >= _nextSpawnTime)) return;
         
-        _enemyFactory.Create(spawnPoint.position);
+        _enemyFactory.Spawn(spawnPoint.position, this);
         _spawnTimer = 0;
         _nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
@@ -51,5 +51,10 @@ public class EnemySpawner : MonoBehaviour
         minSpawnTime = minSpawnTime <= lowerSpawnTimeLimit
             ? minSpawnTime
             : minSpawnTime * difficultyExponentialModifier;
+    }
+    
+    public void Despawn(Enemy enemy)
+    {
+        _enemyFactory.Despawn(enemy);
     }
 }
