@@ -26,26 +26,70 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "29339e3c-6d42-4f50-9fdf-2d58bf6711af",
+                    "name": "Mouse",
+                    "id": "665be272-f2a0-454f-af42-b0df3e29cf0a",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "47247b66-a189-4b15-9ad0-dc53d4a8c3b3",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "8b1205e1-4c5a-4969-a456-7fe0adb0ba7d",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Touch",
+                    "id": "a61708d6-310c-4e33-a6ef-5120f1f66a2e",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "8c21525a-21a6-4e28-b31f-b61879d98dd5",
+                    "name": "modifier",
+                    "id": "bb036bb0-ea6a-4edc-ab8b-0b133eb00c53",
                     "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "74caa781-a477-443d-b6be-7952e4ca9ae4",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

@@ -1,0 +1,24 @@
+{
+    "name": "com.jellof.extendedunityeditor",
+    "version": "1.0.0",
+    "displayName": "Extended Unity Editor",
+    "description": "Extended Components for Unity Editor",
+    "unity": "2019.1",
+    "documentationUrl": "https://example.com/",
+    "changelogUrl": "https://example.com/changelog.html",
+    "licensesUrl": "https://example.com/licensing.html",
+    "keywords": [
+        "editor",
+        "component",
+        "components"
+    ],
+    "author": {
+        "name": "orijel",
+        "email": "orijel1@gmail.com"
+    },
+    "samples": {
+        "displayName": "Tag Component Example",
+        "description": "An example scene showing the extended Tag component",
+        "path": "Samples~/TagSample"
+    }
+  }
