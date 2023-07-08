@@ -8,6 +8,7 @@ public class MainInstaller : MonoInstaller
     [SerializeField] private GameObject pathPointPrefab;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private GameObject projectilePrefab;
     
     public override void InstallBindings()
     {
@@ -18,7 +19,9 @@ public class MainInstaller : MonoInstaller
         Container.Bind<EnemySpawner>().FromComponentOn(enemySpawner).AsSingle();
 
         Container.BindMemoryPool<Enemy, Enemy.Factory>().WithInitialSize(5).FromComponentInNewPrefab(enemyPrefab)
-            .UnderTransformGroup("EnemyPool").AsSingle();
+            .UnderTransformGroup("EnemyPool");
+        Container.BindMemoryPool<Projectile, Projectile.Factory>().WithInitialSize(3).FromComponentInNewPrefab(projectilePrefab)
+            .UnderTransformGroup("ProjectilePool");
 
     }
 }
