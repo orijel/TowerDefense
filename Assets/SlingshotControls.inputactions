@@ -1,0 +1,82 @@
+{
+    "name": "SlingshotControls",
+    "maps": [
+        {
+            "name": "Main",
+            "id": "63402a5a-2c0b-48a2-b532-bacc9fc22057",
+            "actions": [
+                {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "3bca82a0-3fad-48a1-a8a9-48ec66f177f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Aiming",
+                    "type": "Value",
+                    "id": "d22134ef-d1ab-4927-afd6-2a423a5e089e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "29339e3c-6d42-4f50-9fdf-2d58bf6711af",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c21525a-21a6-4e28-b31f-b61879d98dd5",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31604792-f80e-4c63-8935-7c7f8483238d",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be51232e-b9d6-4cf4-8195-3c4f1a14ab8c",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PlayerControls",
+            "bindingGroup": "PlayerControls",
+            "devices": []
+        }
+    ]
+}
