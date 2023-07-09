@@ -222,7 +222,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae54e0c659636a44972018cccee5985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocityMultiplier: 10
+  velocityMultiplier: 10
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  damage: 1
+  projectileCollider: {fileID: 4387949516673245355}
 --- !u!1 &7569701280181584970
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,8 +347,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6037608430520961506}
         m_TargetAssemblyTypeName: Projectile, Assembly-CSharp
-        m_MethodName: OnCollisionWithEdge
-        m_Mode: 1
+        m_MethodName: OnCollisionWithObject
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -358,7 +363,7 @@ MonoBehaviour:
   shouldCheckLayerMask: 1
   mask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   shouldCheckTag: 0
   compareTag: 
 --- !u!1 &8697032642227154711

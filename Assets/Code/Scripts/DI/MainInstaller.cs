@@ -1,4 +1,5 @@
 using Code.Scripts.DI;
+using Code.Scripts.Framework.Health;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +16,9 @@ public class MainInstaller : MonoInstaller
         Container.Bind<LevelManager>().FromInstance(levelManager).AsSingle();
         Container.Bind<PathPoint>().WithId(InjectionId.DummyPathPointId).FromComponentInNewPrefab(pathPointPrefab)
             .AsSingle();
+        Container.Bind<IDamageTaker>().To<Enemy>().FromComponentInParents();
 
+        //TODO: bind all enemy spawners
         Container.Bind<EnemySpawner>().FromComponentOn(enemySpawner).AsSingle();
 
         Container.BindMemoryPool<Enemy, Enemy.Factory>().WithInitialSize(5).FromComponentInNewPrefab(enemyPrefab)

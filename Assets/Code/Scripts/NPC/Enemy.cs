@@ -1,13 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Scripts.Framework.Health;
 using UnityEngine;
 using Zenject;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageTaker
 {
     [Header("References")]
     [SerializeField] private EnemyMovement movement;
+    
+    [Header("Attributes")]
+    [SerializeField] private float health = 2;
     
     private Factory _spawner;
 
@@ -31,6 +35,15 @@ public class Enemy : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+    
+    public void TakeDamage(IDamageApplier damageApplier)
+    {
+        health -= damageApplier.Damage;
+        if (health <= 0)
+        {
+            Despawn();
         }
     }
     

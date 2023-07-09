@@ -1,16 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Scripts.Framework.Health;
 using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IDamageApplier
 {
     [SerializeField] private float velocityMultiplier = 10f;
+    [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private float damage = 1f;
     
     private Factory _spawner;
     private Rigidbody2D _rigidbody;
+    private bool _hasCollided = false;
+
+    public float Damage => damage;
 
     private void Start()
     {
@@ -19,6 +25,7 @@ public class Projectile : MonoBehaviour
     
     private void OnReset(Vector3 startingPosition)
     {
+        _hasCollided = false;
         transform.position = startingPosition;
     }
 
@@ -39,8 +46,17 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void OnCollisionWithEdge()
+    public void OnCollisionWithObject(Collider2D other)
     {
+        if (_hasCollided) return;
+        _hasCollided = true;
+        
+        if (LayerUtils.IsLayerInMask(enemyLayerMask, other.gameObject.layer))
+        {
+            var hittable = other.GetComponent<IDamageTaker>();
+            hittable.TakeDamage(this);
+        }
+        
         Despawn();
     }
     
