@@ -14,11 +14,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TravelPathBase startingPath;
     
 
-    private EnemySpawner _enemySpawner;
+    private EnemySpawner[] _enemySpawner;
     private float _currentDifficultyIncreaseTime = 0f;
 
     [Inject]
-    private void Construct(EnemySpawner enemySpawner)
+    private void Construct(EnemySpawner[] enemySpawner)
     {
         _enemySpawner = enemySpawner;
     }
@@ -29,7 +29,10 @@ public class LevelManager : MonoBehaviour
         if (_currentDifficultyIncreaseTime >= difficultyIncreaseTime)
         {
             _currentDifficultyIncreaseTime = 0;
-            _enemySpawner.IncreaseDifficulty(difficultyModifier);
+            foreach (var enemySpawner in _enemySpawner)
+            {
+                enemySpawner.IncreaseDifficulty(difficultyModifier);
+            }
         }
     }
 

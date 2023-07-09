@@ -1057,7 +1057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 119329099}
   m_Layer: 0
-  m_Name: =====Managers=====
+  m_Name: =====EnemySpawners=====
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7523,7 +7523,7 @@ MonoBehaviour:
   levelManager: {fileID: 1396727223}
   pathPointPrefab: {fileID: 2837510088631935415, guid: c83ddb784f7549145b8a211d21b9035f, type: 3}
   enemyPrefab: {fileID: 2548274149023732670, guid: 1612370d07b71a74598b73d58caf188c, type: 3}
-  enemySpawner: {fileID: 604366041}
+  enemySpawnersRootObj: {fileID: 119329098}
   projectilePrefab: {fileID: 6581699996559536569, guid: 62cbc8971b804f34c880a96ef02c03b6, type: 3}
 --- !u!4 &834447711
 Transform:

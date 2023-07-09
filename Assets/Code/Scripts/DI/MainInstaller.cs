@@ -8,7 +8,7 @@ public class MainInstaller : MonoInstaller
     [SerializeField] private LevelManager levelManager;
     [SerializeField] private GameObject pathPointPrefab;
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private GameObject enemySpawnersRootObj;
     [SerializeField] private GameObject projectilePrefab;
     
     public override void InstallBindings()
@@ -18,8 +18,8 @@ public class MainInstaller : MonoInstaller
             .AsSingle();
         Container.Bind<IDamageTaker>().To<Enemy>().FromComponentInParents();
 
-        //TODO: bind all enemy spawners
-        Container.Bind<EnemySpawner>().FromComponentOn(enemySpawner).AsSingle();
+        Container.Bind<EnemySpawner>()
+            .FromMethodMultiple(_ => enemySpawnersRootObj.GetComponentsInChildren<EnemySpawner>()).AsSingle();
 
         Container.BindMemoryPool<Enemy, Enemy.Factory>().WithInitialSize(5).FromComponentInNewPrefab(enemyPrefab)
             .UnderTransformGroup("EnemyPool");
